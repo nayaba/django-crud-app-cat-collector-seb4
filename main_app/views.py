@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Cat
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import FeedingForm
 
 def home(request):
     return render(request, 'home.html')
@@ -14,7 +15,8 @@ def cat_index(request):
 
 def cat_detail(request, cat_id):
     cat = Cat.objects.get(id=cat_id)
-    return render(request, 'cats/detail.html', {'cat': cat})
+    feeding_form = FeedingForm()
+    return render(request, 'cats/detail.html', {'cat': cat, 'feeding_form': feeding_form})
 
 class CatCreate(CreateView):
     model = Cat
@@ -27,3 +29,11 @@ class CatUpdate(UpdateView):
 class CatDelete(DeleteView):
     model = Cat
     success_url= '/cats/'
+
+def add_feeding(request, cat_id):
+    form = FeedingForm(request.POST)
+    if form.is_valid():
+        new_feeding = form.save(commit=False)
+        new_feeding.cat_id = cat_id
+        new_feeding.save()
+    return redirect('cat-detail', cat_id=cat_id)
