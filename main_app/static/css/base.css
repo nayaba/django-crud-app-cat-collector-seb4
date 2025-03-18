@@ -29,11 +29,11 @@ html {
       'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
       'Helvetica Neue', sans-serif;
     min-height: 100vh;
-    --nav-bg: pink;
-    --nav-bg-ff: pink;
-    --borders: rgb(252, 117, 139) solid 2px;
+    --nav-bg: rgb(255, 192, 218);
+    --nav-bg-ff: rgb(255, 192, 218);
+    --borders: rgb(253, 113, 171) solid 2px;
     --text-color: rgb(17, 20, 17);
-    --link-hover-color: rgb(16, 56, 158);
+    --link-hover-color: rgb(253, 113, 171);
     --button-bg: rgb(245, 245, 245);
     --button-bg-hover: rgb(226, 226, 226);
     --submit: rgb(26, 128, 0);
